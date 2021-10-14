@@ -12,8 +12,8 @@ const User = require('../models/User');
 //just for test
 // router.get('/', (request, response) => response.send('Test Users Router pfm'));
 
-// @route    GET api/users
-// @desc     Test route
+// @route    POST api/users
+// @desc     create a new user
 // @access   Public
 router.post(
     '/',
@@ -35,9 +35,7 @@ router.post(
             // check if user exists
             let user = await User.findOne({ email: email });
             if (user) {
-                return response
-                    .status(400)
-                    .json({ errors: [{ msg: 'User already exists' }] });
+                return response.status(400).json({ errors: [{ msg: 'User already exists' }] });
             }
             // get gravatar
             const avatar = gravatar.url(email, {

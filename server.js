@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-
 const connectToDb = require('./config/mongoConnection');  //it is a script mongoConnection.js
 
 // Connect to Mongo DB
@@ -10,7 +9,7 @@ connectToDb();
 app.use(express.json({extended: false}));
 
 //Just for testing
-app.get('/', (request, response) => response.json({ msg: 'Test Initial Setup ...'}));
+// app.get('/', (request, response) => response.json({ msg: 'Test Initial Setup ...'}));
 
 // Routes (API endpoints)
 app.use('/api/auth', require('./api/auth'));

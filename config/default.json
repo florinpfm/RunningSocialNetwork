@@ -1,4 +1,4 @@
 {
-    "mongoURI" : "mongodb+srv://florin.petrician@gmail.com:UK08arsenal@cluster0.f4v5k.mongodb.net/runSocNetDb?retryWrites=true&w=majority"
+    "mongoURI" : "mongodb+srv://florinpfm:florinpfm@cluster0.llsjf.mongodb.net/runSocNetDb?retryWrites=true&w=majority"
     
 }

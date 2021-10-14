@@ -6,6 +6,6 @@ const router = express.Router();
 // @desc     Test route
 // @access   Public
 
-router.get('/', (request, response) => response.send('Test Auth Router'));
+router.get('/', (request, response) => response.send('Test Auth Router pfm'));
 
 module.exports = router;

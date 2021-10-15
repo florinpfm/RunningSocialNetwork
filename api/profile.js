@@ -1,4 +1,5 @@
-const { request, response } = require('express');
+// const { request, response } = require('express');
+const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
@@ -8,7 +9,7 @@ const Profile = require('../models/Profile');
 const User = require('../models/User');
 
 // just for test
-// router.get('/', (request, response) => response.send('Test Profile Router pfm'));
+// router.get('/', (request, response) => response.send('Test Profiles Router pfm'));
 
 // @route    GET api/profile/me
 // @desc     get user profile
@@ -19,7 +20,7 @@ router.get(
     async (request, response) => {
         try {
             // check if profile exists
-            const profile = await Profile.findOne({ user: user.id }).populate(
+            const profile = await Profile.findOne({ user: request.user.id }).populate(
                 'user',
                 ['name', 'avatar']
             );
@@ -36,7 +37,7 @@ router.get(
     }
 )
 
-// @route         POST api/profile
+// @route         POST api/profile                  BUG: profile is not saved in Mongoose DB
 // @description   create/update profile
 // @access        Private
 router.post(
@@ -84,12 +85,13 @@ router.post(
 
             return response.json(profile);
         } catch (error) {
-
+            console.error(error.message);
+            response.status(500).send('Server error');
         }
     }
 );
 
-// @route         GET api/profile
+// @route         GET api/profile                           BUG: all profiles are not displayed
 // @description   get all profiles
 // @access        Public
 router.get('/', async (request, response) => {
@@ -103,7 +105,7 @@ router.get('/', async (request, response) => {
     }
 })
 
-// @route         GET api/profile/user/:user_id
+// @route         GET api/profile/user/:user_id                 BUG: server error 500
 // @description   Get profile by user id
 // @access        Public
 router.get('/user/:user_id', async (request, response) => {
@@ -130,7 +132,7 @@ router.get('/user/:user_id', async (request, response) => {
 });
 
 // @route         DELETE api/profile
-// @description   Delete profile, user and posts
+// @description   Delete profile, user and posts       <== based on token where it is user.id for both USER and PROFILE
 // @access        Private
 router.delete('/', auth, async (request, response) => {
     try {

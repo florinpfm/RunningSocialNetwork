@@ -1,18 +1,18 @@
-const { request, response } = require('express');
+// const { request, response } = require('express');
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 
 const Post = require('../models/Post');
-const Profile = require('../models/Profile');
+// const Profile = require('../models/Profile');
 const User = require('../models/User');
 
 // just for testing
 // router.get('/', (request, response) => response.send('Test Post Router pfm'));
 
 // @route    POST api/posts
-// @desc     Create a post
+// @desc     Create a new post
 // @access   Private - only logged in user can add a new post
 router.post(
     '/',
@@ -42,7 +42,7 @@ router.post(
 )
 
 // @route         GET api/posts
-// @description   Fetch all posts
+// @description   Fetch all existing posts (of a user) => Do we need authorization for this ?
 // @access        Private - only logged in users can see all posts from all users
 router.get('/', auth, async (request, response) => {
 	// sort the post desceding by added date
@@ -56,7 +56,7 @@ router.get('/', auth, async (request, response) => {
 });
 
 // @route         GET api/posts/:id
-// @description   Get post by id
+// @description   Get post by post id
 // @access        Private - only logged in users can see all posts from all users
 router.get('/:post_id', auth, async (request, response) => {
 	// sort the post desceding by added date
@@ -79,7 +79,7 @@ router.get('/:post_id', auth, async (request, response) => {
 });
 
 // @route         DELETE api/posts/:id
-// @description   Delete post by id
+// @description   Delete post by post id
 // @access        Private - only logged in users can see all posts from all users
 router.delete('/:post_id', auth, async (request, response) => {
 	// sort the post desceding by added date
@@ -108,7 +108,7 @@ router.delete('/:post_id', auth, async (request, response) => {
 });
 
 // @route         PUT api/posts/like/:id
-// @description   Like a post
+// @description   Like a post by post id
 // @access        Private
 router.put('/like/:post_id', auth, async (request, response) => {
 	try {
@@ -132,7 +132,7 @@ router.put('/like/:post_id', auth, async (request, response) => {
 });
 
 // @route         PUT api/posts/unlike/:id
-// @description   Unlike a post
+// @description   Unlike a post by post id
 // @access        Private
 router.put('/unlike/:post_id', auth, async (request, response) => {
 	try {
@@ -162,7 +162,7 @@ router.put('/unlike/:post_id', auth, async (request, response) => {
 });
 
 // @route         POST api/posts/comments/:post_id
-// @description   Create a comment
+// @description   Create a comment by post id
 // @access        Private - only logged in user could add a new post
 router.post(
 	'/comments/:post_id',
@@ -195,7 +195,7 @@ router.post(
 );
 
 // @route         DELETE api/posts/comments/:post_id/:comment_id
-// @description   Delete a comment
+// @description   Delete a comment by post id and comment id
 // @access        Private - only logged in user could add a new post
 router.delete(
 	'/comments/:post_id/:comment_id',

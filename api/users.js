@@ -1,4 +1,4 @@
-const { request, response } = require('express');
+// const { request, response } = require('express');
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
@@ -23,7 +23,7 @@ router.post(
         check('password', 'The password must contain at least 6 characters').isLength({min: 6})
     ],
     async (request, response) => {
-        console.log(request.body);
+        // console.log(request.body);
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
             return response.status(400).json({ errors: errors.array() });
@@ -49,6 +49,8 @@ router.post(
             // encrypt the password
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(password, salt);
+
+            //saves the new user in db
             await user.save();
 
             // return jsonwebtoken

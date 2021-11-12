@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import { FcSportsMode } from 'react-icons/fc';
-import Logo from '../../data/logo.png';
+import Logo from '../../images/logo.png';
 import AuthLinks from './AuthLinks';
 import VisitorsLinks from './VisitorsLinks';
 import { connect } from 'react-redux';

@@ -12,15 +12,15 @@ const Login = (props) => {
             <div className="mb-3">
               <h3>Login Form</h3>
             </div>
-            <form className="row p-4 needs-validation shadow" style={{borderRadius: 25}} novalidate >
+            <form className="row p-4 needs-validation shadow" style={{borderRadius: 25}} noValidate >
               <div className="position-relative mb-3">
-                <label for="email" className="form-label">Email</label>
+                <label htmlFor="email" className="form-label">Email</label>
                 <input type="email" className="form-control" id="email" placeholder="Insert here ..." required/>
                 <div className="valid-tooltip">Looks good!</div>
                 <div className="invalid-tooltip">Please provide a valid email</div>
               </div>
               <div className="position-relative mb-3">
-                <label for="password" className="form-label">Password</label>
+                <label htmlFor="password" className="form-label">Password</label>
                 <input type="password" className="form-control" id="password" placeholder="Insert here ..." required/>
                 <div className="valid-tooltip">Looks good!</div>
                 <div className="invalid-tooltip">Please provide a valid password</div>
@@ -28,7 +28,7 @@ const Login = (props) => {
               <div>
                 <div className="mb-3 form-check">
                   <input type="checkbox" className="form-check-input" id="rememberMe"/>
-                  <label className="form-check-label" for="rememberMe">Remember Me</label>
+                  <label className="form-check-label" htmlFor="rememberMe">Remember Me</label>
                 </div>
               </div>
               <div className="text-center mb-3">

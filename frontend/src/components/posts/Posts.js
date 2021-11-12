@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import MyRegisterImg from '../../data/register.jpg';
+import MyRegisterImg from '../../images/register.jpg';
 
 const Posts = (props) => {
   return (
@@ -15,7 +15,7 @@ const Posts = (props) => {
             <div className="p-4 shadow" style={{borderRadius: 25}}>
 
               {/* {props.posts.map((post) => ( */}
-                // aici pun de fapt componenta <Post />
+                {/* // aici pun de fapt componenta <Post /> */}
               {/* ))} */}
 
               {/* Post exemple 1 */}

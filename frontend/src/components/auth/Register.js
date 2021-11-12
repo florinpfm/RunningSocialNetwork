@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
-import MyRegisterImg from '../../data/register.jpg';
+import MyRegisterImg from '../../images/register.jpg';
 
 const Register = (props) => {
   return (
@@ -14,34 +14,34 @@ const Register = (props) => {
             </div>
             <div className="row justify-content-center shadow" style={{borderRadius: 25}}>
               <div className="col-md-10 col-lg-6 col-xl-6 order-2 order-lg-1 " >
-                <form className="row p-4 needs-validation"  novalidate >
+                <form className="row p-4 needs-validation"  noValidate >
                   <div className="position-relative mb-3">
-                    <label for="name" className="form-label">Name</label>
+                    <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" className="form-control" id="name" placeholder="Insert here ..." required/>
                     <div className="valid-tooltip">Looks good!</div>
                     <div className="invalid-tooltip">Please provide a valid name</div>
                   </div>
                   <div className="position-relative mb-3">
-                    <label for="email" className="form-label">Email</label>
+                    <label htmlFor="email" className="form-label">Email</label>
                     <input type="email" className="form-control" id="email" placeholder="Insert here ..." required/>
                     <div className="valid-tooltip">Looks good!</div>
                     <div className="invalid-tooltip">Please provide a valid email</div>
                   </div>
                   <div className="position-relative mb-3">
-                    <label for="password" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" id="password" placeholder="Insert here ..." required/>
                     <div className="valid-tooltip">Looks good!</div>
                     <div className="invalid-tooltip">Please provide a valid password</div>
                   </div>
                   <div className="position-relative mb-3">
-                    <label for="repetPassword" className="form-label">Repet Password</label>
+                    <label htmlFor="repetPassword" className="form-label">Repet Password</label>
                     <input type="password" className="form-control" id="repetPassword" placeholder="Insert here ..." required/>
                     <div className="valid-tooltip">Looks good!</div>
                     <div className="invalid-tooltip">Please provide a valid password</div>
                   </div>
                   <div className="form-check d-flex justify-content-center mb-3">
                     <input className="form-check-input me-2" type="checkbox" id="form2Example3c"/>
-                    <label className="form-check-label" for="form2Example3">I agree all statements in <a href="#!">Terms of service</a></label>
+                    <label className="form-check-label" htmlFor="form2Example3">I agree all statements in <a href="#!">Terms of service</a></label>
                   </div>
                   <div className="text-center mb-3">
                       <button type="submit" className="btn btn-primary">Register</button>

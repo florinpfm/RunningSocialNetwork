@@ -44,7 +44,7 @@ router.post(
 // @route         GET api/posts
 // @description   Fetch all existing posts (of a user) => Do we need authorization for this ?
 // @access        Private - only logged in users can see all posts from all users
-router.get('/', auth, async (request, response) => {
+router.get('/', async (request, response) => {
 	// sort the post desceding by added date
 	try {
 		const posts = await Post.find().sort({ date: -1 });
@@ -58,7 +58,7 @@ router.get('/', auth, async (request, response) => {
 // @route         GET api/posts/:id
 // @description   Get post by post id
 // @access        Private - only logged in users can see all posts from all users
-router.get('/:post_id', auth, async (request, response) => {
+router.get('/:post_id', async (request, response) => {
 	// sort the post desceding by added date
 	try {
 		const post = await Post.findById(request.params.post_id);

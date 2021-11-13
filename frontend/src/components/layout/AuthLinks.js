@@ -4,9 +4,10 @@ import { IoIosHome } from 'react-icons/io';
 import { FaUser } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 import { SiGooglemessages } from 'react-icons/si';
+import { FiSearch } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/auth';
+import { logout } from '../../actions/actionsAuth';
 
 const AuthLinks = (props) => {
   return (
@@ -26,6 +27,9 @@ const AuthLinks = (props) => {
             </li>
             <li>
                 <NavLink style={({ isActive }) => ({ color: isActive ? 'green' : 'purple' })} to='/posts' className="nav-link border"><SiGooglemessages size={20} style ={{ paddingBottom: 4}} />Posts</NavLink>
+            </li>
+            <li>
+                <NavLink style={({ isActive }) => ({ color: isActive ? 'green' : 'purple' })} to='/posts' className="nav-link border"><FiSearch size={20} style ={{ paddingBottom: 4}} />Friends</NavLink>
             </li>
         </ul>
         {/* Search input field */}

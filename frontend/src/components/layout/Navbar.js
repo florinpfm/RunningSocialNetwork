@@ -6,9 +6,14 @@ import Logo from '../../images/logo.png';
 import AuthLinks from './AuthLinks';
 import VisitorsLinks from './VisitorsLinks';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/auth';
+import { logout } from '../../actions/actionsAuth';
+// import Spinner from './Spinner';
 
-const Navbar = (props) => {
+const Navbar = ({auth: { isAuthenticated, loading, user }, logout }) => {
+    // if(loading) {
+    //     return <Spinner />;
+    // }
+
     return (
         <div className="borderXXX border-primaryXXX">
             {/* Navbar Bootstrap 5 */}
@@ -19,7 +24,15 @@ const Navbar = (props) => {
                         <img className="border" src={Logo} alt="" width="60" height="48"/>
                         <Link to='/index' className="navbar-brand border"><FcSportsMode className="d-none"/>NER's NET</Link>
                     </div>
-                    {props.auth.isAuthenticated ? <AuthLinks /> : <VisitorsLinks />}
+                    {isAuthenticated ? (
+                        <div className="">
+					        <img className="round-img img-small" src={user && user.avatar} alt='avatar' />
+						    <p className="">{user && user.name}</p>
+					    </div>
+                    ) : (
+                        ''
+                    )}
+                    {isAuthenticated ? <AuthLinks /> : <VisitorsLinks />}
                 </div>
             </nav>
         </div>

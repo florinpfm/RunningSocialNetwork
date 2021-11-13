@@ -4,8 +4,6 @@ import { IoIosHome } from 'react-icons/io';
 import { GoSignIn } from 'react-icons/go';
 import { FaFileSignature } from 'react-icons/fa';
 import { SiGooglemessages } from 'react-icons/si';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 const VisitorsLinks = () => {
   return (

@@ -1,10 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import MyRegisterImg from '../../images/register.jpg';
+import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
+import Post from './Post';
+import { getPosts } from '../../actions/actionsPosts';
+import { loadUser } from '../../actions/actionsAuth';
+import PostInput from './PostInput';
 
-const Posts = (props) => {
-  return (
+const Posts = ({ auth, loadUser, getPosts, posts2: { posts, loading } }) => {
+  useEffect(() => {
+    if (auth.isAuthenticated) loadUser();
+    getPosts();
+  }, [getPosts, loadUser]);
+    
+  return loading ? (
+    <Spinner />
+  ) : (
     <div className='inPage'>
       <div className="container-fluid">
         <div className="row justify-content-center bg-light">
@@ -14,35 +25,32 @@ const Posts = (props) => {
             </div>
             <div className="p-4 shadow" style={{borderRadius: 25}}>
 
-              {/* {props.posts.map((post) => ( */}
-                {/* // aici pun de fapt componenta <Post /> */}
-              {/* ))} */}
+              {/* Post input fields when adding a new post */}
+              <PostInput />
 
-              {/* Post exemple 1 */}
-              <div>
-                {/* Post content displayed */}
-                <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center align-items-md-stretch gap-3 border border-danger">
-                  <div className="d-flex flex-column justify-content-center align-items-center border border-primary m-3" style={{width: 150}}>
-                    <p className="text-center d-inline-block m-0 p-0">Florin Marius</p>
-                    <img src={MyRegisterImg} className="rounded-circle m-0 border border-primary" width="150" height="150" alt="..."/>
-                  </div>
-                  <div className="d-flex flex-column justify-content-evenly align-items-start border border-success align-self-stretch">
-                    <p className="m-0 p-0 border border-primary fw-bold py-2">Card title</p>
-                    <p className="m-0 p-0 border border-primary">Thi natural lead-in to additional content. This content is a little bit longer. lorem Lorem Lorem lorem ipsum lush dlkhf lksdhf lkdjshfkldjshfkdjshfkldshfdklshf j jv ;vjh;kvjh ;kjsh ;ksjh ;shf ;ksdjhf k;jv ;kjvd;skv d;skvjd;askvj ;kjsdv ;kdjsv ;ksjv ;kjsdv ;kjdsv ;kjsdv dksjv ;lkdjshfkldjshfkdjshfkldshfdklshf j jv ;vjh;kvjh ;kjsh ;ksjh ;shf ;ksdjhf k;jv ;kjvd;skv d;skvjd;askvj ;kjsdv ;kdjsv ;ksjv ;kjsdv ;kjdsv ;kjsdv dksjv ;kjvasn ;kasj v;dksjvn ;aksvjn ;skjvn; skjnv;ks v;sdvn ;dks vn;ksvn ;k;s nvkdjv k vdjnv ksd vnks vkvs nkjd nn jdnsjv a;h ruhfrhnv ;jvn ;kljsnv;skjv n</p>
-                    <div className="my-2">
-                      <p className="m-0 p-0 border border-primary">icons fontawesome and buttons</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+              {/* each Post is build one after the other here */}
+              {posts.map((post) => ( 
+                <Post key={post._id} post={post} />
+              ))}
 
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Posts;
+Posts.propTypes = {
+  auth: PropTypes.object.isRequired,
+	loadUser: PropTypes.func.isRequired,
+	getPosts: PropTypes.func.isRequired,
+	posts2: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+	posts2: state.posts,
+	auth: state.auth,
+});
+
+export default connect(mapStateToProps, { loadUser, getPosts })(Posts);

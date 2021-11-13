@@ -16,7 +16,13 @@ const User = require('../models/User');
 // @access   Private - only logged in user can add a new post
 router.post(
     '/',
-    [auth, [check('text', 'Post content is required').not().isEmpty()]],
+    [
+			auth,
+			[
+				check('title', 'Post title is required').not().isEmpty(),
+				check('text', 'Post content is required').not().isEmpty(),
+			]
+		],
     async (request, response) => {
         const errors = validationResult(request);
         if(!errors.isEmpty()) {
@@ -26,6 +32,7 @@ router.post(
         try {
             const user = await User.findById(request.user.id).select('-password');
             const newPost = new Post({
+								title: request.body.title,
                 text: request.body.text,
                 name: user.name,
                 avatar: user.avatar,

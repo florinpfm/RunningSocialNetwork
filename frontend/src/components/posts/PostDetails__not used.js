@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+// was supposed to be used as Links to each post in the welcome page/posts page
 
 const PostDetails = (props) => {
   const params = useParams();

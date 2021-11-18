@@ -35,7 +35,10 @@ export const POST_ERROR = 'POST_ERROR';
 export const DELETE_POST = 'DELETE_POST';
 
 //for likes
-export const UPDATE_LIKES = 'UPDATE_LIKES';
+// export const UPDATE_LIKES = 'UPDATE_LIKES';
+export const ADD_LIKE = 'ADD_LIKE';
+export const UNLIKE = 'UNLIKE';
+
 
 // for comments
 export const ADD_COMMENT = 'ADD_COMMENT';

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
-    user: {
+  user: {
 		// the user will be able to delete his own posts
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'user',

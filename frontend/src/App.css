@@ -61,8 +61,11 @@ body {
 /* Navbar */
 .navbar {
   color: #fafafa;
-  opacity: 0.8;
+  opacity: 1;
   position: relative;
+}
+.isActive {
+  border-bottom: solid 1px red;
 }
 
 /* Comment */

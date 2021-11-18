@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { response } from 'express';
 import { setAlert } from './actionsAlert';
 import { GET_PROFILE, GET_ALL_PROFILES, PROFILE_ERROR, CLEAR_PROFILE, ACCOUNT_DELETED } from './actionsConstants';
 

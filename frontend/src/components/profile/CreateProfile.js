@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/actionsProfiles';
 import { MdOutlineAddToPhotos } from 'react-icons/md';
+import { FaFileSignature } from 'react-icons/fa';
 
-import { GrReturn } from 'react-icons/gr';
-
-const createProfile = ({ createProfile, history }) => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
 		nickname: '',
 		gender: '',
@@ -30,76 +29,83 @@ const createProfile = ({ createProfile, history }) => {
   return (
     <div className='inPage'>
       <div className="container-fluid">
-        <div className="row justify-content-center bg-light">
-          <div className="col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 bg-light ">
-            <div className="mb-3">
+        <div className="row justify-content-center bg-lightXXX">
+          <div className="col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 bg-lightXXX ">
+            <div className="my-4 text-center">
               <h3>Create Profile</h3>
             </div>
             <form 
-              className="row p-4 shadow" 
+              className="row p-4 shadow bg-light" 
               style={{borderRadius: 25}} 
               onSubmit={(e) => createProfileHandler(e)}
             >
-              <div className="position-relative mb-3">
-                <label htmlFor="nickname" className="form-label">Email</label>
+              <div className=" mb-3">
+                <label htmlFor="nickname" className="form-label">Nickname</label>
                 <input 
                   type="text" 
                   className="form-control" 
-                  id="nickname" 
+                  id="nickname"
+                  name="nickname"
                   value={nickname}
                   onChange={(e) => updateProfileHandler(e)}
                   placeholder="Insert here ..." 
                   required
                 />
               </div>
-              <div className="position-relative mb-3">
+
+              <div className=" mb-3">
                 <label htmlFor="gender" class="form-label">Gender</label>
-                <select 
-                  class="form-select" 
+                <select
+                  className="form-select"
                   id="gender"
+                  name="gender"
                   value={gender}
                   onChange={(e) => updateProfileHandler(e)}
-                  required
+                  
                 >
-                    <option selected disabled value="">Choose an option</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                  <option value="0">Choose an option</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </select>
               </div>
-              <div className="position-relative mb-3">
+
+              <div className=" mb-3">
                 <label htmlFor="status" className="form-label">Status</label>
                 <input 
                   type="text" 
                   className="form-control" 
                   id="status" 
+                  name="status"
                   value={status}
                   onChange={(e) => updateProfileHandler(e)}
                   placeholder="Insert here ..." 
-                  required
+                  
                 />
               </div>
-              <div className="position-relative mb-3">
+              <div className=" mb-3">
                 <label htmlFor="city" className="form-label">City</label>
                 <input 
                   type="text" 
                   className="form-control" 
                   id="city" 
+                  name="city"
                   value={city}
                   onChange={(e) => updateProfileHandler(e)}
                   placeholder="Insert here ..." 
-                  required
+                  
                 />
               </div>
-              <div className="position-relative mb-3">
+              <div className=" mb-3">
                 <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
                 <input 
                   type="number" 
                   className="form-control" 
                   id="phoneNumber" 
+                  name="phoneNumber" 
                   value={phoneNumber}
                   onChange={(e) => updateProfileHandler(e)}
                   placeholder="Insert here ..." 
-                  required
+                  
                 />
               </div>
               <div className="text-center mb-3">
@@ -119,3 +125,4 @@ CreateProfile.propTypes = {
 };
 
 export default connect(null, { createProfile })(withRouter(CreateProfile));
+

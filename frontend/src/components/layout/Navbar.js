@@ -7,31 +7,32 @@ import AuthLinks from './AuthLinks';
 import VisitorsLinks from './VisitorsLinks';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/actionsAuth';
-// import Spinner from './Spinner';
+import Spinner from './Spinner';
 
 const Navbar = ({auth: { isAuthenticated, loading, user }, logout }) => {
-    // if(loading) {
-    //     return <Spinner />;
-    // }
+    if(loading) {
+        return <Spinner />;
+    }
 
     return (
         <div className="borderXXX border-primaryXXX">
             {/* Navbar Bootstrap 5 */}
-            <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light navbar-customclassXXX">
                 <div className="container-fluid">
                     {/* Brand text */}
                     <div className="d-flex align-items-center">
                         <img className="border" src={Logo} alt="" width="60" height="48"/>
-                        <Link to='/index' className="navbar-brand border"><FcSportsMode className="d-none"/>NER's NET</Link>
+                        <Link to='/' className="navbar-brand border"><FcSportsMode className="d-none"/>NER's NET</Link>
+                        {isAuthenticated ? (
+                            <div className="d-flex flex-align-center align-items-center gap-1">
+                                <img className="rounded-circle ms-5 p-0" src={user && user.avatar} alt='avatar' width="35" height="35" />
+                                <p className="m-0 p-0 text-dark fw-bold">{user && user.name}</p>
+                            </div>
+                        ) : (
+                            ''
+                        )}
                     </div>
-                    {isAuthenticated ? (
-                        <div className="">
-					        <img className="round-img img-small" src={user && user.avatar} alt='avatar' />
-						    <p className="">{user && user.name}</p>
-					    </div>
-                    ) : (
-                        ''
-                    )}
+                    
                     {isAuthenticated ? <AuthLinks /> : <VisitorsLinks />}
                 </div>
             </nav>

@@ -14,18 +14,25 @@ export const register = ({name, email, password}) => async (dispatch) => {
 
     try {
       const response = await axios.post('/api/users', body, config); // here we make a POST to "users from endpoint" with name, email, password and header 'app/json'
+      // console.log('001 POST registration response is: ');
+      // console.log(response.data.data);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: response.data,  //".data" comes from axios, it is implemented to work like that
       })
     } catch (error) {
-      const errors = error.response.data.errors;
+      // console.log('001 POST registration failure');
 
-      if(errors) {
-        errors.forEach(error => {
-          dispatch(setAlert(error.msg, 'danger', 3000))
-        })
-      }
+      // const errors = error.response.data.errors;
+
+      // if(errors) {
+      //   errors.forEach(error => {
+      //     dispatch(setAlert(error.msg, 'danger', 3000))
+      //   })
+      // }
+
+      dispatch(setAlert(error.msg, 'danger', 3000));
+
       dispatch({
         type: REGISTER_FAIL,
       })
@@ -40,11 +47,14 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     const response = await axios.get('/api/auth');   // here we make a GET to "auth from endpoint" with header 'token'
+    console.log('actionsAuth.js@loadUser function--> response from db when loadUser @ actionsAuth is: USER_LOADED');
+    console.log(response);
     dispatch({
       type: USER_LOADED,
-      payload: response.data  //".data" comes from axios, it is implemented to work like that
+      payload: response.data  //".data" has for the user: avatar, date, email, name, _id
     })
   } catch (error) {
+    console.log('actionsAuth.js@login function--> is: error AUTH_ERROR');
     dispatch({
       type: AUTH_ERROR,
     })
@@ -63,18 +73,24 @@ export const login = ({ email, password }) => async (dispatch) => {
 
   try {
     const response = await axios.post('/api/auth', body, config);   // here we make a POST to "auth from endpoint" with email, password and header 'app/json'
+    console.log('actionsAuth.js@login function--> response from db when login @ actionsAuth is: LOGIN_SUCCESS, and the token is: ');
+    console.log(response.data);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: response.data,   //".data" comes from axios, it is implemented to work like that
+      payload: response.data,   //".data" has for auth: the token
     });
   } catch (error) {
-    const errors = error.response.data.errors;
+    console.log('actionsAuth.js@login function--> response from db when login @ actionsAuth is: error LOGIN_FAIL');
+    // const errors = error.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => {
-        dispatch(setAlert(error.msg, 'danger', 3000));
-      });
-    }
+    // if (errors) {
+    //   errors.forEach((error) => {
+    //     dispatch(setAlert(error.msg, 'danger', 3000));
+    //   });
+    // }
+
+    dispatch(setAlert(error.msg, 'danger', 3000));
+
     dispatch({
       type: LOGIN_FAIL,
     });

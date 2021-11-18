@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_POST, GET_ALL_POSTS, UPDATE_POST, POST_ERROR, DELETE_POST, UPDATE_LIKES } from './actionsConstants';
+import { ADD_POST, GET_ALL_POSTS, UPDATE_POST, POST_ERROR, DELETE_POST, ADD_LIKE, UNLIKE } from './actionsConstants';
 
 // for posts - add post
 export const addPost = (formData) => async (dispatch) => {
@@ -29,11 +29,17 @@ export const addPost = (formData) => async (dispatch) => {
 export const getPosts = () => async (dispatch) => {
   try {
     const response = await axios.get('/api/posts');
+    console.log('actionsPosts.js@getPosts --> se face axios.get all posts si avem GET_ALL_POSTS ');
+    console.log('here are the posts: ');
+    console.log(response.data);
     dispatch({
       type: GET_ALL_POSTS,
       payload: response.data,
     });
+
   } catch (error) {
+    console.log('actionsPosts.js@getPosts --> se face axios.get all posts si avem POST_ERROR ');
+
     dispatch({
       type: POST_ERROR,
       payload: {
@@ -93,12 +99,16 @@ export const addLike = (postId) => async (dispatch) => {
     const response = await axios.put(`/api/posts/like/${postId}`);
 
     dispatch({
-      type: UPDATE_LIKES,
-      payload: {
-        id: postId,
-        likes: response.data,
-      },
+      type: ADD_LIKE,
+      payload: response.data,
+
     });
+
+    const resp = await axios.get('/api/posts');
+    dispatch({
+      type: GET_ALL_POSTS,
+      payload: resp.data,
+    })
   } catch (error) {
     dispatch({
       type: POST_ERROR,
@@ -115,20 +125,28 @@ export const unLike = (postId) => async (dispatch) => {
   try {
     const response = await axios.put(`/api/posts/unlike/${postId}`);
     dispatch({
-      type: UPDATE_LIKES,
-      payload: {
-        id: postId,
-        likes: response.data,
-      },
+      type: UNLIKE,
+      payload: response.data,
+
     });
-  } catch (error) {
+
+    const resp = await axios.get('/api/posts');
     dispatch({
-      type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
-    });
+      type: GET_ALL_POSTS,
+      payload: resp.data,
+    })
+  } catch (error) {
+
+    // const errors = error.response.data.errors;
+    console.log(error);
+
+  //   dispatch({
+  //     type: POST_ERROR,
+  //     payload: {
+  //       msg: error.response.statusText,
+  //       status: error.response.status,
+  //     },
+  //   });
   }
 };
 

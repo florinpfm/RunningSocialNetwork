@@ -22,7 +22,7 @@ const PostInput = ({ auth, addPost }) => {
             }}
           >
             <div className="position-relative mb-3">
-              <label for="title" className="form-label">Title</label>
+              <label htmlFor="title" className="form-label">Title</label>
               <input 
                 type="text" 
                 className="form-control" 
@@ -34,7 +34,7 @@ const PostInput = ({ auth, addPost }) => {
               />
             </div>
             <div className="position-relative mb-3">
-              <label for="contentPost" className="form-label">Post Content</label>
+              <label htmlFor="contentPost" className="form-label">Post Content</label>
               <textarea 
                 className="form-control" 
                 id="contentPost" 

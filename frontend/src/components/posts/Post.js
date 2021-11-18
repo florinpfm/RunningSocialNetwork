@@ -15,11 +15,12 @@ const Post = ({
   updatePost,
   deletePost,
   auth,
-  post: {_id, title, text, name, avatar, user, likes, comments, date },
+  post: {_id, title, text, name, avatar, user, likes, comments, date},
 }) => {
   const [newTitle, setTitle] = useState(title);
 	const [newText, setText] = useState(text);
 	const [isEditing, setEditing] = useState(false);
+
   return (
     // Post content displayed 
     <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center align-items-md-stretch gap-3 border border-danger">
@@ -45,7 +46,7 @@ const Post = ({
                 }}
               >
                 <div className="position-relative mb-3">
-                  <label for="title" className="form-label">Title</label>
+                  <label htmlFor="title" className="form-label">Title</label>
                   <input 
                     type="text" 
                     className="form-control" 
@@ -57,7 +58,7 @@ const Post = ({
                   />
                 </div>
                 <div className="position-relative mb-3">
-                  <label for="contentPost" className="form-label">Post Content</label>
+                  <label htmlFor="contentPost" className="form-label">Post Content</label>
                   <textarea 
                     className="form-control" 
                     id="contentPost" 
@@ -90,7 +91,7 @@ const Post = ({
         {auth.isAuthenticated && !auth.loading && (
           // buttons for Like, unLike, 
           <Fragment>
-          <button
+            <button
             type="button"
             className="btn btn-light"
             onClick={() => addLike(_id)}
@@ -107,27 +108,29 @@ const Post = ({
           >
             <BiDislike />
           </button>
-          {user === auth.user._id && (
-            <Fragment>
-              <button
-                onClick={(e) => setEditing(!isEditing)}
-                type="button"
-                className="btn btn-primary"
-              >
-                <FiEdit />
-                Edit
-              </button>
-              <button
-                onClick={() => deletePost(_id)}
-                type="button"
-                className="btn btn-danger"
-              >
-                <MdDeleteForever />
-                Delete
-              </button>
-            </Fragment>
-          )}
-        </Fragment>
+
+            {user === auth.user?._id && (
+              <Fragment>
+                <button
+                  onClick={(e) => setEditing(!isEditing)}
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  <FiEdit />
+                  Edit
+                </button>
+
+                <button
+                  onClick={() => deletePost(_id)}
+                  type="button"
+                  className="btn btn-danger"
+                >
+                  <MdDeleteForever />
+                  Delete
+                </button>
+              </Fragment>
+            )}
+          </Fragment>
         )}
       </div>
     </div>

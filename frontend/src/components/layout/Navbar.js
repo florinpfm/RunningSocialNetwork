@@ -8,6 +8,7 @@ import VisitorsLinks from './VisitorsLinks';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/actionsAuth';
 import Spinner from './Spinner';
+import Alert from './Alert';
 
 const Navbar = ({auth: { isAuthenticated, loading, user }, logout }) => {
     if(loading) {
@@ -36,6 +37,7 @@ const Navbar = ({auth: { isAuthenticated, loading, user }, logout }) => {
                     {isAuthenticated ? <AuthLinks /> : <VisitorsLinks />}
                 </div>
             </nav>
+            <Alert />
         </div>
     )
 }

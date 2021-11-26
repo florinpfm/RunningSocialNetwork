@@ -33,7 +33,7 @@ const EditProfile = ({
 				city: loading || !profile.city ? '' : profile.city,
 			});
 		}
-	}, []);
+	}, [getCurrentUserProfile, loading, profile]);
   // added here in [] as a TEST the getCurrentUserProfile, loading, profile
 
   const { phoneNumber, city, status, gender, nickname } = formData;
@@ -127,8 +127,8 @@ const EditProfile = ({
                 />
               </div>
               <div className="text-center mb-3">
-                <button type="submit" className="btn btn-primary"><MdOutlineAddToPhotos size={20} style ={{ paddingBottom: 4}} />Submit</button>
-                <Link to='/posts' className="btn btn-outline-primary btn-sm"><FaFileSignature size={20} style ={{ paddingBottom: 4}} />Return</Link>
+                <button type="submit" className="btn btn-primary px-3"><MdOutlineAddToPhotos size={20} style ={{ paddingBottom: 4}} />Submit</button>
+                <Link to='/posts' className="btn btn-outline-primary px-3 ms-2 "><FaFileSignature size={20} style ={{ paddingBottom: 4}} />Return</Link>
               </div>
 
               

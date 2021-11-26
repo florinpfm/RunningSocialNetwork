@@ -7,7 +7,6 @@ import { GoSignIn } from 'react-icons/go';
 import { FaFileSignature } from 'react-icons/fa';
 import { Link, Redirect } from 'react-router-dom';
 
-
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -94,6 +93,7 @@ const Login = ({ login, isAuthenticated }) => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

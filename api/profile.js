@@ -32,7 +32,7 @@ router.get(
             response.json(profile);
         } catch (error) {
             console.error(error.message);
-            response.status(500).send('Server error');
+            response.status(500).send('Server profile error');
         }
     }
 )
@@ -86,7 +86,7 @@ router.post(
             return response.json(profile);
         } catch (error) {
             console.error(error.message);
-            response.status(500).send('Server error');
+            response.status(500).send('Server profile error');
         }
     }
 );
@@ -101,7 +101,7 @@ router.get('/', async (request, response) => {
         response.json(profiles);
     } catch (error) {
         console.error(error.message);
-        response.status(500).send('Server error');
+        response.status(500).send('Server profile error');
     }
 })
 
@@ -127,7 +127,7 @@ router.get('/user/:user_id', async (request, response) => {
                 .status(400)
                 .json({ msg: 'No profile found for this user id' })
         }
-        response.status(500).send('Server error');
+        response.status(500).send('Server profile error');
     }
 });
 
@@ -144,7 +144,7 @@ router.delete('/', auth, async (request, response) => {
         response.json({ msg: 'User deleted' });
     } catch (error) {
         console.error(error.message);
-        response.status(500).send('Server error');
+        response.status(500).send('Server profile error');
     }
 });
 

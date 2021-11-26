@@ -54,7 +54,7 @@ const CreateProfile = ({ createProfile, history }) => {
               </div>
 
               <div className=" mb-3">
-                <label htmlFor="gender" class="form-label">Gender</label>
+                <label htmlFor="gender" className="form-label">Gender</label>
                 <select
                   className="form-select"
                   id="gender"
@@ -109,8 +109,8 @@ const CreateProfile = ({ createProfile, history }) => {
                 />
               </div>
               <div className="text-center mb-3">
-                <button type="submit" className="btn btn-primary"><MdOutlineAddToPhotos size={20} style ={{ paddingBottom: 4}} />Submit</button>
-                <Link to='/posts' className="btn btn-outline-primary btn-sm"><FaFileSignature size={20} style ={{ paddingBottom: 4}} />Return</Link>
+                <button type="submit" className="btn btn-primary px-3"><MdOutlineAddToPhotos size={20} style ={{ paddingBottom: 4}} />Submit</button>
+                <Link to='/posts' className="btn btn-outline-primary px-3 ms-2"><FaFileSignature size={20} style ={{ paddingBottom: 4}} />Return</Link>
               </div>
             </form>
           </div>

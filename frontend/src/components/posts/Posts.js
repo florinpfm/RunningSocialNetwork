@@ -13,8 +13,11 @@ const Posts = ({ auth, loadUser, getPosts, posts: { posts, loading } }) => {
     console.log(auth.isAuthenticated);
     if (auth.isAuthenticated) loadUser(); //aici se da comanda de executare LOAD_USER pt login si register 
     getPosts();
-  }, [getPosts, loadUser, auth.isAuthenticated]);
+  }, []);
   // added here in the [] as a TEST the auth.isAuthenticated
+
+  console.log('here are the posts received: ');
+  console.log(posts);
     
   return loading ? (
     <Spinner />
@@ -34,6 +37,7 @@ const Posts = ({ auth, loadUser, getPosts, posts: { posts, loading } }) => {
               {/* each Post is build one after the other here */}
               {posts.map((post) => ( 
                 <Post key={post._id} post={post} />
+                
               ))}
 
             </div>

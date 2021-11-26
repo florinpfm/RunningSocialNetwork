@@ -20,7 +20,7 @@ const AuthLinks = (props) => {
                 <NavLink to='/account' className="nav-link border"><FaUser size={20} style ={{ paddingBottom: 4}} />Account</NavLink>
             </li>
             <li>
-                <NavLink onClick={() => props.logout()} to='/' className="nav-link border"><GoSignOut size={20} style ={{ paddingBottom: 4}} />Logout</NavLink>
+                <NavLink onClick={() => props.logout()} to='/index' className="nav-link border"><GoSignOut size={20} style ={{ paddingBottom: 4}} />Logout</NavLink>
             </li>
             <li>
                 <NavLink to='/posts' className="nav-link border"><SiGooglemessages size={20} style ={{ paddingBottom: 4}} />Posts</NavLink>

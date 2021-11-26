@@ -81,15 +81,17 @@ export const login = ({ email, password }) => async (dispatch) => {
     });
   } catch (error) {
     console.log('actionsAuth.js@login function--> response from db when login @ actionsAuth is: error LOGIN_FAIL');
-    // const errors = error.response.data.errors;
+    console.log(error);
+    
+    const errors = error.response.data.errors;
 
-    // if (errors) {
-    //   errors.forEach((error) => {
-    //     dispatch(setAlert(error.msg, 'danger', 3000));
-    //   });
-    // }
+    if (errors) {
+      errors.forEach((error) => {
+        dispatch(setAlert(error.msg, 'danger', 5000));
+      });
+    }
 
-    dispatch(setAlert(error.msg, 'danger', 3000));
+    // dispatch(setAlert(error.msg, 'danger', 3000));
 
     dispatch({
       type: LOGIN_FAIL,

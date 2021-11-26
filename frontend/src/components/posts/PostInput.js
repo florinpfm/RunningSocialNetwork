@@ -46,7 +46,7 @@ const PostInput = ({ auth, addPost }) => {
             </div>
             <div className="mt-2 d-flex justify-content-center">
               <button className="btn btn-primary btn-sm shadow-none" type="submit">Add Post</button>
-              <button className="btn btn-outline-primary btn-sm ms-1 shadow-none" type="button">Cancel</button>
+              <button className="btn btn-outline-primary btn-sm ms-3 px-3 shadow-none" type="button">Cancel</button>
             </div>
           </form>
         </div>

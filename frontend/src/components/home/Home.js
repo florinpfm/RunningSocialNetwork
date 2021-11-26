@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { IoAddCircleOutline } from 'react-icons/io5';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
+import { withRouter } from 'react-router-dom';
 
 const Home = ({
   loadUser,
@@ -146,4 +147,4 @@ export default connect(mapStateToProps, {
 	loadUser,
 	getCurrentUserProfile,
 	deleteAccount,
-})(Home);
+})(withRouter(Home));

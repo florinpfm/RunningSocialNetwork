@@ -18,6 +18,7 @@ body {
   /* background-color: chartreuse; */
 }
 
+
 /* css global variables */
 :root {
   --primary-color: #7027A0;
@@ -85,4 +86,9 @@ body {
 /* Register Page */
 .height100Percent {
   height: 100%;
+}
+
+/* Posts page */
+.minHeight {
+  min-height: 150px;
 }

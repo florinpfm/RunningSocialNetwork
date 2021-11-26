@@ -73,7 +73,7 @@ router.post(
             // response.send('User registered');
         } catch (error) {
             console.error(error.message);
-            response.status(500).send('Server error');
+            response.status(500).send('Server users error');
         }
 
         // response.send('Test Users Route');

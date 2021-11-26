@@ -43,7 +43,7 @@ router.post(
             response.json(post);
         } catch (error) {
             console.error(error.message);
-            response.status(500).send('');
+            response.status(500).send('Server posts error');
         }
     }
 )
@@ -58,7 +58,7 @@ router.get('/', async (request, response) => {
 		response.json(posts);
 	} catch (error) {
 		console.error(error.message);
-		response.status(500).send('Server error');
+		response.status(500).send('Server posts error');
 	}
 });
 
@@ -81,7 +81,7 @@ router.get('/:post_id', async (request, response) => {
 		if (error.kind == 'ObjectId') {
 			return response.status(404).json({ msg: 'Post not found' });
 		}
-		response.status(500).send('Server error');
+		response.status(500).send('Server posts error');
 	}
 });
 
@@ -129,7 +129,7 @@ router.put('/:post_id',
 			if (error.kind == 'ObjectId') {
 				return response.status(404).json({ msg: 'Post not found' });
 			}
-			response.status(500).send('Server error');
+			response.status(500).send('Server posts error');
 		}
 	}
 );
@@ -159,7 +159,7 @@ router.delete('/:post_id', auth, async (request, response) => {
 		if (error.kind == 'ObjectId') {
 			return response.status(404).json({ msg: 'Post not found' });
 		}
-		response.status(500).send('Server error');
+		response.status(500).send('Server posts error');
 	}
 });
 
@@ -183,7 +183,7 @@ router.put('/like/:post_id', auth, async (request, response) => {
 		return response.json(post.likes);
 	} catch (error) {
 		console.error(error.message);
-		response.status(500).send('Server error');
+		response.status(500).send('Server posts error');
 	}
 });
 
@@ -213,7 +213,7 @@ router.put('/unlike/:post_id', auth, async (request, response) => {
 		return response.json(post.likes);
 	} catch (error) {
 		console.error(error.message);
-		response.status(500).send('Server error');
+		response.status(500).send('Server posts error');
 	}
 });
 
@@ -245,7 +245,7 @@ router.post(
 			response.json(post.comments);
 		} catch (error) {
 			console.error(error.message);
-			response.status(500).send('');
+			response.status(500).send('Server posts error');
 		}
 	}
 );
@@ -288,7 +288,7 @@ router.delete(
 			return response.json(post.comments);
 		} catch (error) {
 			console.error(error.message);
-			response.status(500).send('Server error');
+			response.status(500).send('Server posts error');
 		}
 	}
 );

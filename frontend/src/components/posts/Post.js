@@ -29,15 +29,15 @@ const Post = ({
         <img src={avatar} className="rounded-circle m-0 border border-primary" width="150" height="150" alt="..."/>
       </div>
 
-      <div>
+      <div className="width100Percent">
         
         {isEditing ? (
           // the post input fields for title + text
           <Fragment>
-            {' '}
+            
             <div className="bg-light p-2 border border-success">
               <form 
-                className="row"
+                className="row" 
                 onSubmit={(e) => {
                   e.preventDefault();
                   updatePost(_id, { title: newTitle, text: newText });
@@ -69,8 +69,7 @@ const Post = ({
                   ></textarea>
                 </div>
                 <div className="mt-2 d-flex justify-content-center">
-                  <button className="btn btn-primary btn-sm shadow-none" type="submit">Add Post</button>
-                  <button className="btn btn-outline-primary btn-sm ms-1 shadow-none" type="button">Cancel</button>
+                  <button className="btn btn-primary btn-sm shadow-none" type="submit">Update Post</button>
                 </div>
               </form>
             </div>
@@ -78,12 +77,11 @@ const Post = ({
         ) : (
           // the post title and text after post finished editing
           <Fragment>
-            <div className="d-flex flex-column justify-content-evenly align-items-start border border-success align-self-stretch">
+            <div className="d-flex flex-column justify-content-evenly align-items-start border border-success align-self-stretch minHeight">
               <p className="m-0 p-0 border border-primary fw-bold py-2">{newTitle}</p>
               <p className="m-0 p-0 border border-primary">{newText}</p>
-              <div className="d-flex flex-content-end my-2">
-                <p className="m-0 p-0 border border-primary">Created on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment></p>
-              </div>
+              <p className="m-0 p-0 py-2 border border-primary">Created on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment></p>
+              
             </div>
           </Fragment>
         )}
@@ -91,45 +89,52 @@ const Post = ({
         {auth.isAuthenticated && !auth.loading && (
           // buttons for Like, unLike, 
           <Fragment>
-            <button
-            type="button"
-            className="btn btn-light"
-            onClick={() => addLike(_id)}
-          >
-            <BiLike />
-            <span>
-              {likes.length > 0 && <span>{likes.length}</span>}
-            </span>
-          </button>
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={() => unLike(_id)}
-          >
-            <BiDislike />
-          </button>
+            
+            <div className="bg-warningXXX my-3 d-flex">
+              <button
+                type="button"
+                className="btn btn-light bg-warning border border-danger m-0 p-0"
+                onClick={() => addLike(_id)}
+              >
+                <BiLike size={25} style ={{ paddingBottom: 4}} />
+                <span>
+                  {likes.length > 0 && <span>{likes.length}</span>}
+                </span>
+              </button>
 
-            {user === auth.user?._id && (
-              <Fragment>
-                <button
-                  onClick={(e) => setEditing(!isEditing)}
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  <FiEdit />
-                  Edit
-                </button>
+              <button
+                type="button"
+                className="btn btn-light bg-warning border border-danger m-0 p-0 ms-3"
+                onClick={() => unLike(_id)}
+              >
+                <BiDislike  size={25} style ={{ paddingBottom: 4}} />
+              </button>
 
-                <button
-                  onClick={() => deletePost(_id)}
-                  type="button"
-                  className="btn btn-danger"
-                >
-                  <MdDeleteForever />
-                  Delete
-                </button>
-              </Fragment>
-            )}
+              {user === auth.user?._id && (                     // user === auth.user?._id
+                <Fragment>
+                  <div className="text-right">
+                    <button
+                      onClick={(e) => setEditing(!isEditing)}
+                      type="button"
+                      className="btn btn-primary btn-sm ms-5 px-3"
+                    >
+                      <FiEdit size={20} style ={{ paddingBottom: 4}} />
+                      Edit
+                    </button>
+
+                    <button
+                      onClick={() => deletePost(_id)}
+                      type="button"
+                      className="btn btn-danger btn-sm ms-3"
+                    >
+                      <MdDeleteForever  size={20} style ={{ paddingBottom: 4}} />
+                      Delete
+                    </button>
+                  </div>
+                  
+                </Fragment>
+              )}
+            </div>
           </Fragment>
         )}
       </div>

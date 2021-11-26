@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
@@ -35,6 +35,9 @@ const App = () => {
         <div className="App">
           <Navbar />
           <Route exact path="/" component={Landing} />
+          <Route path='/index'>
+            <Redirect to='/'></Redirect>
+          </Route>
           <Alert />
           <Switch>
 						<Route exact path="/register" component={Register} />

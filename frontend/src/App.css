@@ -18,6 +18,16 @@ body {
   /* background-color: chartreuse; */
 }
 
+.thisIsTheAlertParent {
+  position: absolute;
+  width: 100%;
+}
+
+.thisIsTheAlert {
+  text-align: center;
+  width: 100%;
+  z-index: 2000;
+}
 
 /* css global variables */
 :root {

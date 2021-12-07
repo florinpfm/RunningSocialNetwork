@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const Alert = (props) => (
-	<div className="">
+	<div className="thisIsTheAlert">
 		{props.alerts !== null &&
 			props.alerts.length > 0 &&
 			props.alerts.map((alert) => (

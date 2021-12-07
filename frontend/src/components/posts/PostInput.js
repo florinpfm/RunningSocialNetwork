@@ -10,7 +10,7 @@ const PostInput = ({ auth, addPost }) => {
   return (
     <Fragment>
       {auth.isAuthenticated && !auth.loading && (
-        <div className="bg-light p-2 border border-success">
+        <div className="bg-light p-2 mb-3 border border-dark">
           <form 
             className="row"
             onSubmit={(e) => {

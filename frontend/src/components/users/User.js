@@ -23,11 +23,9 @@ const User =({
 						<li className="list-group-item">{city && (<span><IoLocationSharp /> {city}</span>)}</li>
 						<li className="list-group-item">{gender && (<span><BsGenderAmbiguous /> {gender}</span>)}</li>
 						<li className="list-group-item">{status && (<span><GrStatusInfo /> {status}</span>)}</li>
-						<li className="list-group-item">{nickname && (<span><SiNamecheap /> {nickname}</span>)}</li>
+						<li className="list-group-item mb-3">{nickname && (<span><SiNamecheap /> {nickname}</span>)}</li>
 					</ul>
-					<div className="card-body">
-						
-					</div>
+					
 				</div>
 			</div>
 		)

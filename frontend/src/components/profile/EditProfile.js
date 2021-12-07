@@ -33,7 +33,7 @@ const EditProfile = ({
 				city: loading || !profile.city ? '' : profile.city,
 			});
 		}
-	}, [getCurrentUserProfile, loading, profile]);
+	}, []);
   // added here in [] as a TEST the getCurrentUserProfile, loading, profile
 
   const { phoneNumber, city, status, gender, nickname } = formData;

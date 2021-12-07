@@ -13,13 +13,13 @@ const VisitorsLinks = () => {
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           
               <li>
-                  <NavLink to='/login' className="nav-link border"><GoSignIn size={20} style ={{ paddingBottom: 4}} />Login</NavLink>
+                  <NavLink to='/login' className="nav-link borderXXX"><GoSignIn size={20} style ={{ paddingBottom: 4}} />Login</NavLink>
               </li>
               <li>
-                  <NavLink to='/register' className="nav-link border"><FaFileSignature size={20} style ={{ paddingBottom: 4}} />Register</NavLink>
+                  <NavLink to='/register' className="nav-link borderXXX"><FaFileSignature size={20} style ={{ paddingBottom: 4}} />Register</NavLink>
               </li>
               <li>
-                  <NavLink to='/posts' className="nav-link border"><SiGooglemessages size={20} style ={{ paddingBottom: 4}} />Posts</NavLink>
+                  <NavLink to='/posts' className="nav-link borderXXX"><SiGooglemessages size={20} style ={{ paddingBottom: 4}} />Posts</NavLink>
               </li>
           </ul>
           {/* Search input field */}

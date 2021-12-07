@@ -23,10 +23,10 @@ const Post = ({
 
   return (
     // Post content displayed 
-    <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center align-items-md-stretch gap-3 border border-danger">
-      <div className="d-flex flex-column justify-content-center align-items-center border border-primary m-3" style={{width: 150}}>
+    <div className="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center align-items-md-stretch gap-3 border-bottom borderXXX border-dark bg-infoXXX">
+      <div className="d-flex flex-column justify-content-center align-items-center borderXXX border-primaryXXX m-3" style={{width: 150}}>
         <p className="text-center d-inline-block m-0 p-0">{name}</p>
-        <img src={avatar} className="rounded-circle m-0 border border-primary" width="150" height="150" alt="..."/>
+        <img src={avatar} className="rounded-circle m-0 borderXXX border-primaryXXX" width="150" height="150" alt="..."/>
       </div>
 
       <div className="width100Percent">
@@ -35,7 +35,7 @@ const Post = ({
           // the post input fields for title + text
           <Fragment>
             
-            <div className="bg-light p-2 border border-success">
+            <div className="bg-light p-2 borderXXX border-successXXX">
               <form 
                 className="row" 
                 onSubmit={(e) => {
@@ -77,10 +77,10 @@ const Post = ({
         ) : (
           // the post title and text after post finished editing
           <Fragment>
-            <div className="d-flex flex-column justify-content-evenly align-items-start border border-success align-self-stretch minHeight">
-              <p className="m-0 p-0 border border-primary fw-bold py-2">{newTitle}</p>
-              <p className="m-0 p-0 border border-primary">{newText}</p>
-              <p className="m-0 p-0 py-2 border border-primary">Created on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment></p>
+            <div className="d-flex flex-column justify-content-evenly align-items-start borderXXX border-successXXX align-self-stretch minHeight">
+              <p className="m-0 p-0 borderXXX border-primaryXXX fw-bold py-2">{newTitle}</p>
+              <p className="m-0 p-0 borderXXX border-primaryXXX">{newText}</p>
+              <p className="m-0 p-0 py-2 borderXXX border-primaryXXX">Created on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment></p>
               
             </div>
           </Fragment>
@@ -93,7 +93,7 @@ const Post = ({
             <div className="bg-warningXXX my-3 d-flex">
               <button
                 type="button"
-                className="btn btn-light bg-warning border border-danger m-0 p-0"
+                className="btn btn-light bg-warning border border-dangerXXX m-0 p-0"
                 onClick={() => addLike(_id)}
               >
                 <BiLike size={25} style ={{ paddingBottom: 4}} />
@@ -104,7 +104,7 @@ const Post = ({
 
               <button
                 type="button"
-                className="btn btn-light bg-warning border border-danger m-0 p-0 ms-3"
+                className="btn btn-light bg-warning border border-dangerXXX m-0 p-0 ms-3"
                 onClick={() => unLike(_id)}
               >
                 <BiDislike  size={25} style ={{ paddingBottom: 4}} />
@@ -138,6 +138,7 @@ const Post = ({
           </Fragment>
         )}
       </div>
+      
     </div>
   )
 };

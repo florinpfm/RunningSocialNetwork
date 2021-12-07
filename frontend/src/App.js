@@ -38,7 +38,7 @@ const App = () => {
           <Route path='/index'>
             <Redirect to='/'></Redirect>
           </Route>
-          <Alert />
+          
           <Switch>
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />

@@ -22,8 +22,8 @@ const Navbar = ({auth: { isAuthenticated, loading, user }, logout }) => {
                 <div className="container-fluid">
                     {/* Brand text */}
                     <div className="d-flex align-items-center">
-                        <img className="border" src={Logo} alt="" width="60" height="48"/>
-                        <Link to='/' className="navbar-brand border"><FcSportsMode className="d-none"/>NER's NET</Link>
+                        <img className="borderXXX" src={Logo} alt="" width="60" height="48"/>
+                        <Link to='/' className="navbar-brand borderXXX"><FcSportsMode className="d-none"/>NER's NET</Link>
                         {isAuthenticated ? (
                             <div className="d-flex flex-align-center align-items-center gap-1">
                                 <img className="rounded-circle ms-5 p-0" src={user && user.avatar} alt='avatar' width="35" height="35" />
@@ -37,7 +37,13 @@ const Navbar = ({auth: { isAuthenticated, loading, user }, logout }) => {
                     {isAuthenticated ? <AuthLinks /> : <VisitorsLinks />}
                 </div>
             </nav>
-            <Alert />
+            <div className="thisIsTheAlertParent">
+                <div className='d-flex justify-content-center'>
+                    <Alert />
+                </div>
+                
+            </div>
+            
         </div>
     )
 }
